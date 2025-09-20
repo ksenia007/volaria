@@ -13,6 +13,7 @@ Code and workflows to recreate the results of the manuscript 📄
 
 ### Data access 
 `GTEx WGS`: dbGaP accession phs000424.v10.p2 (controlled access).
+
 `CureGN WGS + clinical`: request via the Cure Glomerulonephropathy (CureGN) Consortium under applicable data-use agreements.
 Scripts expect local paths to these datasets and annotations; see comments in volaria_main/ and manuscript/.
 
