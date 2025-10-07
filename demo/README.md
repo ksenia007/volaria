@@ -1,6 +1,6 @@
 # Volaria Demo Pipeline
 
-This demo illustrates how to process a sample VCF file through the **Volaria** genomic embedding and prediction pipeline — starting from raw variants and ending with disease-outcome predictions.
+This demo illustrates how to process a sample VCF file through the **Volaria** genomic embedding and prediction pipeline - starting from raw variants and ending with disease-outcome predictions.
 
 ---
 
@@ -79,7 +79,7 @@ Saves sharded pickles under `./demo_run/variants_to_person`
 
 ### 2. Flip to Patient -> Variants
 
-Combine the per-variant dictionaries into a single dictionary keyed by patient.
+Combine the per-variant dictionaries into a single dictionary keyed by individual.
 
 ```bash
 python ../volaria_main/step2_flip_dict_patient_variant.py \
@@ -102,7 +102,7 @@ variants_to_person.split_0.pkl
 
 ### 3. Collect Regulatory Predictions
 
-Extract per-variant regulatory scores (e.g., from Expecto-SC) and aggregate them for each patient.
+Extract per-variant regulatory scores (e.g., from ExpectoSC) and aggregate them for each patient.
 
 ```bash
 python ../volaria_main/step3_collect_expectosc.py \
