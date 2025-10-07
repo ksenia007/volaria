@@ -19,6 +19,7 @@ Code and workflows to recreate the results of the manuscript 📄
 Scripts expect local paths to these datasets and annotations; see comments in volaria_main/ and manuscript/.
 
 
+---
 ### Example usage notes:
 
 Please see `demo` for sample walkthrough, getting from example VCF to predictions 
@@ -30,4 +31,17 @@ In summary, the pipeline is as follows:
 - Train outcome models (Step 7).
 - Generate figures/tables via scripts in manuscript/ (see file headers for inputs).
 
+
+---
+### Environment Setup
+
+Before running the pipeline, create a clean Python environment with the required dependencies:
+
+```bash
+pyenv install 3.10.9
+pyenv local 3.10.9  
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
 Environment time installation should be negligible; sample run is also quick. Full run on custom cohorts would depend on the # individuals and # variants.
