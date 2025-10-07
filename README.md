@@ -27,15 +27,10 @@ Please see `demo` for sample walkthrough, getting from example VCF to prediction
 In summary, the pipeline is as follows:
 
 - Build embeddings (example in volaria_main/ Steps 1–5)
+- [option 1] Train new outcome models (Step 6-7).
+- [option 2] Use pre-trained models
 
-Then, either:
-- Train outcome models (Step 6-7).
-- Generate figures/tables via scripts in manuscript/ (see file headers for inputs).
-
-Or, use pre-trained models
-- Use embeddings to get predictions
-
-
+Code in `manuscript` can be used to generate figures/tables via scripts in manuscript/ (see file comment on the top of the file for inputs).
 
 ---
 ### Environment Setup
