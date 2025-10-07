@@ -8,7 +8,8 @@ Code and workflows to recreate the results of the manuscript 📄
   - **Step 6:** cohort integration (CureGN / GTEx, as in manuscript).
   - **Step 7:** outcome model training.
 - `manuscript/` - code needed to reproduce manuscript Figures and Tables
-- `requirements.txt` - Python environment
+- `requirements.txt` - Python 3.10.9 environment 
+- `demo` - sample workflow to run the model end-to-end on example VCF
 
 
 ### Data access 
@@ -20,7 +21,13 @@ Scripts expect local paths to these datasets and annotations; see comments in vo
 
 ### Example usage notes:
 
+Please see `demo` for sample walkthrough, getting from example VCF to predictions 
+
+In summary, the pipeline is as follows:
+
 - Build embeddings (example in volaria_main/ Steps 1–5).
 - Integrate cohorts & adjust for PCs (Step 6).
 - Train outcome models (Step 7).
 - Generate figures/tables via scripts in manuscript/ (see file headers for inputs).
+
+Environment time installation should be negligible; sample run is also quick. Full run on custom cohorts would depend on the # individuals and # variants.

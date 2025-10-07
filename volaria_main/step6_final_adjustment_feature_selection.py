@@ -28,38 +28,10 @@ def regress_out_pcs_together(standardized_matrix, n_components, model=None, pca=
     
     if model is None:
         model = LinearRegression() 
-    model.fit(pcs, standardized_matrix)
+        model.fit(pcs, standardized_matrix)
     residuals = standardized_matrix - model.predict(pcs)
     return model, pca, residuals
-    
-def regress_out_pcs(standardized_matrix, n_components, norm_func='standard', reg_all=None, pca=None):
-    """
-    Regress out the first N principal components (PCs) from a feature matrix.
-    """
-    if pca is None:
-        pca = PCA(n_components=n_components)
-        pcs = pca.fit_transform(standardized_matrix)
-    else:
-        pcs = pca.transform(standardized_matrix)
-
-    residuals = pd.DataFrame(index=standardized_matrix.index, columns=standardized_matrix.columns)
-    print('Regressing the first', n_components, 'PCs')
-
-    if reg_all is None:
-        reg_all = {}
-        for feature in standardized_matrix.columns:
-            y = standardized_matrix[feature].values.reshape(-1, 1)
-            X = pcs
-            reg = LinearRegression().fit(X, y)
-            reg_all[feature] = reg
-            residuals[feature] = (y - reg.predict(X)).flatten()
-    else:
-        for feature in standardized_matrix.columns:
-            y = standardized_matrix[feature].values.reshape(-1, 1)
-            X = pcs
-            reg = reg_all[feature]
-            residuals[feature] = (y - reg.predict(X)).flatten()
-    return reg_all, pca, residuals
+ 
 
 def drop_collinear_features(X, threshold=0.8):
     """

@@ -18,6 +18,7 @@ import numpy as np
 import pickle
 import sys
 import os
+import gzip
 
 loc_dicts = str(sys.argv[1])
 print('loc_dicts', loc_dicts)
@@ -33,7 +34,8 @@ if not loc_dicts.endswith('/'):
 
 # read sample header line (first non-##)
 first_line = True
-with open(original_file) as f:
+open_func = gzip.open if original_file.endswith(".gz") else open
+with open_func(original_file, "rt") as f:
     for line in f:
         if line[0:2] == '##':
             continue

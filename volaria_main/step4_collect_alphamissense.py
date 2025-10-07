@@ -61,11 +61,11 @@ def normalize_scores_table(scores_csv: str, gene_map_csv: str | None) -> pd.Data
       - gene symbol column is 'gene_name' (via merge if needed)
       - 'am_class' and 'am_pathogenicity' are present
     """
-    df = pd.read_csv(scores_csv)
-    
+    df = pd.read_csv(scores_csv, sep="\t")
+        
     # Accept alternative headers from prior runs
-    if "#Uploaded_variation" in df.columns and "SNP" not in df.columns:
-        df = df.rename(columns={"#Uploaded_variation": "SNP"})
+    if "Uploaded_variation" in df.columns and "SNP" not in df.columns:
+        df = df.rename(columns={"Uploaded_variation": "SNP"})
     if "Gene" in df.columns and "gene_id" not in df.columns:
         df = df.rename(columns={"Gene": "gene_id"})
 

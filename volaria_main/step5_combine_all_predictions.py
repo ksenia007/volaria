@@ -13,7 +13,7 @@ python step5_combine_all_predictions.py \
   --out_pickle /path/to/combined_mean_counts_weighted.pkl \
   [--drop_ids 001,002] \
   [--drop_ids_file /path/to/drop_ids.txt] \
-  [--long_keys podocyte,cd4tcell,cd8tcell,glomerularendothelium,myofibroblast,weighted_AM_mean] \
+  [--long_keys podocyte,bcell,cd4tcell,cd8tcell,glomerularendothelium,myofibroblast,weighted_AM_mean] \
   [--long_out_csv /path/to/long_matrix.transpose.csv] \
   [--gene_list /path/to/gene_subset.txt]
 
@@ -45,7 +45,9 @@ def process_predictions_all(loc_am: str,
             except Exception:
                 # only DataFrame-like entries support drop; skip non-frames
                 pass
-
+    predsALL['AM_scores_mean10'] = predsALL['AM_scores_sum10'].div(predsALL['AM_counts10'].replace(0,1))
+    predsALL['AM_scores_mean11'] = predsALL['AM_scores_sum11'].div(predsALL['AM_counts11'].replace(0,1))
+    
     predsALL["weighted_AM_sum"] = predsALL["AM_scores_sum11"].add(
         0.5 * predsALL["AM_scores_sum11"], fill_value=0
     )

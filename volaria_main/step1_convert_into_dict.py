@@ -100,6 +100,8 @@ def process_vcf(in_path: str,
         nonlocal variants_patients, shard_idx
         # create an os path to the new file, with folder and file name
         save_file = out_path+'/'+f"{out_prefix}.split_{shard_idx}.pkl"
+        # check that the folder exists, if not create it
+        os.makedirs(os.path.dirname(save_file), exist_ok=True)
         with open(save_file, "wb") as f:
             pickle.dump(variants_patients, f, protocol=pickle.HIGHEST_PROTOCOL)
         print(f"[save] {out_path}  ({len(variants_patients)} variants)")
