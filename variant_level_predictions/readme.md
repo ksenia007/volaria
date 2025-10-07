@@ -1,4 +1,4 @@
-# Prepare variant effects (exonic, VEP + AlphaMissense)
+# Prepare variant effects
 
 This folder provides an example on how to:
 1) select variants in specified regions from a source VCF, and  
