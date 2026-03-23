@@ -1,5 +1,5 @@
 """
-AlphaMissense (AM) exon aggregation → patient × gene matrices
+AlphaMissense (AM) exon aggregation -> patient x gene matrices
 -------------------------------------------------------------
 Parses VEP output with AlphaMissense annotations and aggregates per-variant AM
 metrics into per-patient, per-gene matrices 

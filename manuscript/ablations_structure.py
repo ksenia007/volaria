@@ -25,13 +25,13 @@ from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from get_data_utils import get_subset
 
 
-FIG_DIR = "outputs/figures_verify"
-STATUS_TRAIN = "/data/curegn/curegn_genome/result/ksenia/processed_Ksenia/FINAL/status_train_2023.csv"
-STATUS_TEST = "/data/curegn/curegn_genome/result/ksenia/processed_Ksenia/FINAL/status_test_2023.csv"
-VERSION_USE = "_2023_3"
+FIG_DIR = "outputs/figures"
+STATUS_TRAIN = "status_train.csv"
+STATUS_TEST = "status_test.csv"
+VERSION_USE = "_3"
 TRAIN_X = f"outputs/temp/regressed_v{VERSION_USE}.TRAIN.csv"
 TEST_X = f"outputs/temp/regressed_v{VERSION_USE}.TEST.csv"
-MODELS_PKL = "outputs/temp/models_vF2_2023_seeds.pkl"
+MODELS_PKL = "outputs/temp/models_seeds.pkl"
 
 RAND_SEEDS = [13, 37, 42, 73, 132, 57, 101]
 
@@ -150,8 +150,6 @@ def fit_eval_baselines(
     test_label: pd.DataFrame,
 ) -> dict:
     models_base: dict[str, dict[str, list[float]]] = {}
-    disease_subset: list[str] = []
-    ancestry_subset: list[str] = []
 
     for predict_feature, use_time_cutoff in PREDICT_FEATURES:
         for use_input in ["SEX", "ge_max", "AM_max", "ALL_max"]:
@@ -163,6 +161,7 @@ def fit_eval_baselines(
                 max_depth = cfg["max_depth"]
                 n_estimators = cfg["n_estimators"]
             else:
+                # extra possible outcomes
                 max_depth = 3
                 n_estimators = 10
 
@@ -170,9 +169,9 @@ def fit_eval_baselines(
                 trainX_base,
                 testX_base,
                 predict_feature,
-                disease_subset=disease_subset,
-                ancestry_subset=ancestry_subset,
                 use_time_cutoff=use_time_cutoff,
+                train_loc=STATUS_TRAIN,
+                test_loc=STATUS_TEST,
             )
 
             if use_input not in ["ALL", "ALL_max", "ALL_counts", "diagnosis", "diagnosis_MCD_FSGS"]:

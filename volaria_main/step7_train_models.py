@@ -1,11 +1,9 @@
 """
-Volaria - 2nd Module Model Training Script
-===============================
 Trains RandomForestClassifier models for one or more clinical outcomes using the
-preprocessed TRAIN/TEST feature matrices and label CSVs. For each outcome and for
-each fixed random seed, it fits a model on TRAIN and evaluates on TEST, storing
-the fitted estimator and standard metrics (ROC/PR curves and AUCs). Results are
-packed into a single pickle and saved under outputs/models/ without overwriting.
+preprocessed TRAIN/TEST feature matrices and label CSVs (STATUS_TRAIN, STATUS_TEST). 
+For each outcome and for each fixed random seed, it fits a model on TRAIN and evaluates 
+on TEST, storing the fitted estimator and standard metrics (ROC/PR curves and AUCs). 
+Results arepacked into a single pickle and saved under outputs/models/ without overwriting.
 
 Dependencies and default values
 ---------------
@@ -18,12 +16,6 @@ Dependencies and default values
     eGFR40:           n_estimators=100,  max_depth=2
     Steroid_resistant:n_estimators=1000, max_depth=2
 - Classifier: RandomForestClassifier(class_weight="balanced", criterion="entropy")
-
-CLI flexibility
----------------
-You can optionally override the targets via a comma-separated list:
-    --targets ESRD,eGFR40
-If omitted, the script trains the default three outcomes above. Assumes same file structure
 
 Note: If outputs/models/models_outcomes.pkl already exists, it is not overwritten.
 """
@@ -42,11 +34,11 @@ import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import roc_curve, auc, precision_recall_curve, average_precision_score
 
-from get_data_utils import get_subset  # uses your existing utility
+from get_data_utils import get_subset  
 
-STATUS_TRAIN = "/data/curegn/curegn_genome/result/ksenia/processed_Ksenia/FINAL/status_train_2023.csv"
-STATUS_TEST = "/data/curegn/curegn_genome/result/ksenia/processed_Ksenia/FINAL/status_test_2023.csv"
-VERSION_USE = "_2023_3"
+STATUS_TRAIN = "status_train.csv"
+STATUS_TEST = "status_test.csv"
+VERSION_USE = "_3"
 TRAIN_X = f"outputs/temp/regressed_v{VERSION_USE}.TRAIN.csv"
 TEST_X = f"outputs/temp/regressed_v{VERSION_USE}.TEST.csv"
 
@@ -87,9 +79,9 @@ def train_for_outcome(
         X_train_full,
         X_test_full,
         outcome,
-        disease_subset=DISEASE_SUBSET,
-        ancestry_subset=ANCESTRY_SUBSET,
         use_time_cutoff=use_time_cutoff,
+        train_loc=STATUS_TRAIN,
+        test_loc=STATUS_TEST,
     )
 
     result: dict = {

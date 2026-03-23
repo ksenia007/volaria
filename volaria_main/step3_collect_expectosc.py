@@ -2,7 +2,7 @@
 Collect ExpectoSC predictions into patient matrices & embeddings
 -------
 Aggregates ExpectoSC non-coding effect scores into per-patient, per-gene matrices
-and derives fixed “embedding” matrices used by Volaria. Supports both GTEx and
+and derives fixed represenation matrices used by Volaria. Supports both GTEx and
 CureGN by passing the corresponding input paths via CLI flags.
 
 Inputs (CLI)
@@ -24,38 +24,6 @@ import pickle
 import numpy as np
 import pandas as pd
 import re
-
-# def _clean_cols(cols):
-#     clean = []
-#     for c in cols:
-#         s = str(c).strip().lower()
-#         # drop symbols/spaces 
-#         s = re.sub(r"[^0-9a-z]+", "", s)
-#         clean.append(s)
-#     return clean
-
-# def normalize_key4(s: str) -> str | None:
-#     """
-#     Accepts variants like '1_54490_G_A_b37', 'chr1_54490_G/A', '1_54490_G_A'
-#     Returns '1_54490_G_A' or None if not parseable.
-#     """
-#     if s is None:
-#         return None
-#     s = str(s).strip()
-#     # unify separators to underscores
-#     s = s.replace("/", "_")
-#     if s.lower().startswith("chr"):
-#         s = s[3:]
-#     parts = s.split("_")
-#     if len(parts) < 4:
-#         return None
-#     chrom, pos, ref, alt = parts[0], parts[1], parts[2], parts[3]
-#     if not pos.isdigit():
-#         return None
-#     # standardize bases
-#     ref = ref.upper()
-#     alt = alt.upper()
-#     return f"{chrom}_{pos}_{ref}_{alt}"
 
 def load_inputs(scores_file: str, pat_dict_file: str):
     t0 = time.time()

@@ -1,20 +1,3 @@
-
-# # we pass in scores as is, and then take ABS of the residuals
-# # use from step6_final_adjustment_feature_selection import regress_out_pcs_together, 
-# # def regress_out_pcs_together(standardized_matrix, n_components, model=None, pca=None):
-# # models regress are as "'podocyte': {'scaler': StandardScaler(),
-# #   'model': LinearRegression(),
-# #   'pca': PCA(n_components=10)},
-# #  'glomerularendothelium': {'scaler': StandardScaler(),
-# #   'model': LinearRegression(),
-# #   'pca': PCA(n_components=10)}," ... 
-# SCALE_LOC = '/Users/sokolova/Documents/research/volaria/resources/outcome_models/models_regress.pkl'
-
-# # then using these predictions, we pass through the models
-# # inside MODELS_BASE we have models like ESRD.pkl, etc
-# MODELS_BASE = "/Users/sokolova/Documents/research/volaria/resources/outcome_models/outcomes/"
-
-#!/usr/bin/env python3
 """
 Get predictions from pre-trained models
 """
@@ -26,7 +9,6 @@ import numpy as np
 import pandas as pd
 from step6_final_adjustment_feature_selection import regress_out_pcs_together
 
-# ---------- IO ----------
 def read_long_table(path: str) -> pd.DataFrame:
     sep = ","
     df = pd.read_csv(path, sep=sep, index_col=0)
@@ -82,7 +64,7 @@ def residual_abs_per_ct(z_ct: np.ndarray, ct_list: List[str], pack: Dict[str, di
         res_map[ct] = abs(val)   
     return res_map
 
-# ---------- Models ----------
+# Models 
 def load_model_obj(pkl: str):
     with open(pkl, "rb") as f:
         obj = pickle.load(f)
@@ -125,11 +107,11 @@ def main():
     cts = long_df.index.str.split('_').str[1].unique().tolist()
     print('AVAILABLE ', cts)
 
-    # 2) load regressors + pick CTs
+    # load regressors + pick CTs
     pack = load_regress_pack(args.regressors_pkl)
     ct_list = sorted(pack.keys())
 
-    # 3) convert long into more common shape: 
+    # convert long into more common shape: 
     df = long_df.T
     res_map = pd.DataFrame()
     for ct in ct_list:

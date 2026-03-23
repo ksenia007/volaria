@@ -29,10 +29,10 @@ from sklearn.metrics import (
 
 # Paths / Constants
 FIG_DIR = "outputs/figures_verify"
-MODELS_PKL = "outputs/temp/models_vF2_2023_seeds.pkl"
+MODELS_PKL = "outputs/temp/models_seeds.pkl"
 
-STATUS_TRAIN = "/data/curegn/curegn_genome/result/ksenia/processed_Ksenia/FINAL/status_train_2023.csv"
-STATUS_TEST = "/data/curegn/curegn_genome/result/ksenia/processed_Ksenia/FINAL/status_test_2023.csv"
+STATUS_TRAIN = "status_train.csv"
+STATUS_TEST = "status_test.csv"
 
 PGS_STUDIES: List[str] = [
     "PGS000708",
@@ -258,7 +258,7 @@ def main() -> None:
 
     pr_gain_df = pd.DataFrame({"study": pr_labels, "gain": pr_gains}).sort_values(by="gain", ascending=True)
 
-    # Align colors so 'Volaria' uses its color & others grey
+    # align colors
     color_map = {name: ("grey" if name != "Volaria" else COLOR_DICT_PRIMARY[TARGET]) for name in pr_gain_df["study"]}
 
     width = 0.7

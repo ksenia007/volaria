@@ -27,10 +27,10 @@ from scipy.stats import mannwhitneyu, ttest_ind
 FIG_DIR = "outputs/figures_verify"
 os.makedirs(FIG_DIR, exist_ok=True)
 
-MODELS_PKL = "outputs/temp/models_vF2_2023_seeds.pkl"
-STATUS_TRAIN = "/data/curegn/curegn_genome/result/ksenia/processed_Ksenia/FINAL/status_train_2023.csv"
-STATUS_TEST = "/data/curegn/curegn_genome/result/ksenia/processed_Ksenia/FINAL/status_test_2023.csv"
-VERSION_USE = "_2023_3"
+MODELS_PKL = "outputs/temp/models_seeds.pkl"
+STATUS_TRAIN = "status_train.csv"
+STATUS_TEST = "status_test.csv"
+VERSION_USE = "_3"
 TRAIN_X = f"outputs/temp/regressed_v{VERSION_USE}.TRAIN.csv"
 TEST_X  = f"outputs/temp/regressed_v{VERSION_USE}.TEST.csv"
 DROP_MAP = f"outputs/temp/drop_map_v{VERSION_USE}.pkl"

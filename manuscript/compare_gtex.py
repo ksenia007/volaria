@@ -22,10 +22,10 @@ import matplotlib.pyplot as plt
 from sklearn.metrics import roc_curve, auc, precision_recall_curve, average_precision_score, balanced_accuracy_score
 
 
-FIG_DIR = "outputs/figures_verify"
-MODELS_PKL = "outputs/temp/models_vF2_2023_seeds.pkl"
+FIG_DIR = "outputs/figures"
+MODELS_PKL = "outputs/temp/models_seeds.pkl"
 
-VERSION_USE = "_2023_3"
+VERSION_USE = "_3"
 GTEX_X = f"outputs/temp/regressed_v{VERSION_USE}.GTEx.csv"
 GTEX_LABELS = (
     "/pph/controlled/dbGaP/GTEx/input/phenotypes/"

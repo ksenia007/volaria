@@ -8,7 +8,7 @@ Optional: require substring in SAMPLE field (e.g., 'PASS') per-sample (KO quirk)
 Use EITHER:
   --vcf /full/path/to/chr10.20k.vcf.recode.vcf          (single-file mode; recommended for weird basenames)
 OR
-  --chrom 10 --file-subname 20k --loc /data             (chrom mode ⇒ /data/chr10.20k.vcf.recode.vcf)
+  --chrom 10 --file-subname 20k --loc /data             (chrom mode -> /data/chr10.20k.vcf.recode.vcf)
 
 Sample selection is PREFIX-ONLY (e.g., --sample-prefix KO or --sample-prefix GTEX).
 """

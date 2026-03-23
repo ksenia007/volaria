@@ -8,7 +8,7 @@ MODELS_BASE="../manuscript/models/outcomes/"
 
 mkdir -p "$WORKDIR"
 
-# 1) Variants → dict 
+# 1) Variants -> dict 
 python ../volaria_main/step1_convert_into_dict.py \
   --vcf "$VCF" \
   --sample-prefix "KO" \
@@ -75,7 +75,7 @@ python ../volaria_main/step5_combine_all_predictions.py \
 # [ok] Saved long matrix (transpose) → ./demo_run/combined_features_long.tsv
 
 # 6) Predict 
-python /Users/sokolova/Documents/research/volaria/code_github/volaria/volaria_main/get_predictions.py \
+python ../volaria_main/get_predictions.py \
   --features       "$WORKDIR/combined_features_long.tsv" \
   --regressors-pkl "$SCALE_LOC" \
   --models-dir     "$MODELS_BASE" \
