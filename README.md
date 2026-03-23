@@ -13,9 +13,8 @@ Code and workflows to recreate the results of the manuscript 📄
 
 
 ### Data access 
-`GTEx WGS`: dbGaP accession phs000424.v10.p2 (controlled access).
+The raw whole genome sequence data used in this study are available through dbGaP under accession numbers phs000424.v10.p2 (GTEx) and phs002480.v3.p3 (CureGN). GENCODE Release 19, GRCh37.p13 was used to identify TSS locations. 
 
-`CureGN WGS + clinical`: request via the Cure Glomerulonephropathy (CureGN) Consortium under applicable data-use agreements.
 Scripts expect local paths to these datasets and annotations; see comments in volaria_main/ and manuscript/.
 
 
