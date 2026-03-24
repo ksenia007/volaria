@@ -123,7 +123,7 @@ Integrate per-variant exonic effect scores (e.g., AlphaMissense) and map to gene
 
 ```bash
 python ../volaria_main/step4_collect_alphamissense.py \
-  --scores-csv "$AM_SUB" \
+  --scores-csv "$EXONIC" \
   --patient-dict "$WORKDIR/persons_to_variants.pkl" \
   --out-pkl "$WORKDIR/am_by_person.full.pkl" \
   --id-format curegn \
