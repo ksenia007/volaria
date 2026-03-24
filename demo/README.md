@@ -49,6 +49,10 @@ They correspond to:
 
 ## Step-by-Step Pipeline
 
+```bash
+cd demo
+```
+
 ### 1. Convert Variants -> Dict
 
 Each variant in the VCF is assigned a unified key (`CHROM_POS_REF_ALT`) and grouped by sample.
@@ -106,7 +110,7 @@ Extract per-variant regulatory scores (e.g., from ExpectoSC) and aggregate them 
 
 ```bash
 python ../volaria_main/step3_collect_expectosc.py \
-  --scores_file "$EXPECTO_SUB" \
+  --scores_file "$REG" \
   --pat_dict_file "$WORKDIR/persons_to_variants.pkl" \
   --save_file_full "$WORKDIR/expectosc_by_person.full.pkl" \
   --save_file_embedding "$WORKDIR/expectosc_by_person.embedding.pkl"
